@@ -1,0 +1,45 @@
+<div class="d-flex justify-content-center align-items-center" style="background-color: #3C429E">
+  <div class="container">
+    <div class="mt-3">
+      <form (ngSubmit)="onSubmit()" #heroForm="ngForm" class="search">
+        <input class="search" type="text" [(ngModel)]="cityName" name="cityName" placeholder="Enter City Name..."/>
+      </form>
+    </div>
+    <div class="card rounded my-3 shadow-lg back-card border-0">
+      <div class="card-top text-center">
+        <div class="city-name my-3">
+          <p class="{{textColor}}">{{weatherData.name}}, {{weatherData.sys.country}}</p>
+          <span class="{{textColor}}">...</span>
+        </div>
+        <img src="{{image}}" alt="" class="card-img-top time" />
+      </div>
+
+      <div class="card-body">
+        <div class="card-mid row">
+          <div class="col-8 text-center temp">
+            <span>{{weatherData.main.temp}}&deg;C</span>
+          </div>
+          <div class="col-4 condition-temp">
+            <p class="condition">{{weatherData.weather[0].main}}</p>
+            <p class="high">{{weatherData.main.temp_max}}&deg;C</p>
+            <p class="low">{{weatherData.main.temp_min}}&deg;C</p>
+          </div>
+        </div>
+
+        <div class="icon-container card shadow mx-auto">
+          <img src="https://openweathermap.org/img/wn/{{weatherData.weather[0].icon}}@2x.png" alt="" />
+        </div>
+        <div class="card-bottom px-5 py-4 row">
+          <div class="col text-center">
+            <p>{{weatherData.main.feels_like}}&deg;C</p>
+            <span>Feels Like</span>
+          </div>
+          <div class="col text-center">
+            <p>{{weatherData.main.humidity}}%</p>
+            <span>Humidity</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
